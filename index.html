@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SAVALA WEBSHOP</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bulma.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/7d3734c5d3.js" crossorigin="anonymous"></script>
+
+    <!-- MAIL.JS  -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script>
+        emailjs.init("RURrsWi-IymeDrKxd"); // Public Key  from your EmailJS dashboard.
+    </script>
+
+    <style>
+    </style>
+
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar custom-navbar" role="navigation" aria-label="main navigation">
+            <!-- Tab Bar Navigation -->
+<div class="tab-bar">
+    <div class="tab-item active">
+        <i class="icon-home"></i> <!-- Replace with your icons or text -->
+        Home
+    </div>
+    <div class="tab-item">
+        <i class="icon-search"></i> <!-- Replace with your icons or text -->
+        Search
+    </div>
+    <div class="tab-item">
+        <i class="icon-profile"></i> <!-- Replace with your icons or text -->
+        Profile
+    </div>
+    <!-- Add more tabs as necessary -->
+</div>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item">
+                        Home
+                    </a>
+
+                    <a class="navbar-item">
+                        Documentation
+                    </a>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            More
+                        </a>
+
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                About
+                            </a>
+                            <a class="navbar-item">
+                                Jobs
+                            </a>
+                            <a class="navbar-item">
+                                Contact
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                                Report an issue
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <!--
+    <section class="hero is-extra-small custom-navbar">
+        <div class="hero-body">
+            
+            <p class="subtitle text-left-margin">
+                Primary subtitle
+            </p>
+        </div>
+    </section>
+     -->
+    <div class="container ">
+        <div class="columns smaller-card">
+            <div class="column is-9 ">
+                <!-- 9-wide container -->
+
+                <div class="columns is-multiline is-1">
+                    <!-- Product cards will be appended here -->
+                </div>
+
+            </div>
+            <!-- Cart Container -->
+            <div class="column is-3">
+                <!-- 3-wide shopping cart container -->
+                <div class="card custom-card-bg">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            <span class="icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </span>
+                            KOSÁR
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <!-- Shopping cart content goes here -->
+                        <div id="shopping-cart">
+                            <ul id="cart-items" class="menu-list">
+                                <!-- Cart items will be dynamically added here -->
+                            </ul>
+                            <hr>
+                            <div class="level-left">
+                                <div class="level-left">
+                                    <div class="level-item">
+                                        <p class="subtitle is-5 has-text-weight-semibold"></p>
+                                    </div>
+                                </div>
+                                <div class="level-left">
+                                    <div class="level-item">
+                                        <p id="total-price" class="is-size-5 has-text-weight-semibold">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="has-text-centered">
+                                <button id="clear-cart-btn" class="button is-danger is-fullwidth"
+                                    onclick="clearCart()">CLEAR ALL</button>
+
+                                <button id="checkout-btn" class="button is-primary is-fullwidth"
+                                    onclick="openModal()">Checkout</button>
+
+                                <div id="checkout-modal" class="modal">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-card">
+                                        <header class="modal-card-head">
+                                            <p class="modal-card-title">Checkout</p>
+                                            <button class="delete" aria-label="close" onclick="closeModal()"></button>
+                                        </header>
+                                        <div class="modal-card-body">
+                                            <form action="https://formsubmit.co/YOUR_UNIQUE_FORMSUBMIT_ID"
+                                                method="POST">
+                                                <!-- Name Input -->
+                                                <div class="field">
+                                                    <label class="label">Name</label>
+                                                    <div class="control">
+                                                        <input class="input" type="text" name="name"
+                                                            placeholder="Your Name" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Telephone Input -->
+                                                <div class="field">
+                                                    <label class="label">Telephone</label>
+                                                    <div class="control">
+                                                        <input class="input" type="tel" name="telephone"
+                                                            placeholder="Your Telephone Number" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Email Input -->
+                                                <div class="field">
+                                                    <label class="label">Email</label>
+                                                    <div class="control">
+                                                        <input class="input" type="email" name="email"
+                                                            placeholder="Your Email Address" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Hidden Field for Email Recipient -->
+                                                <input type="hidden" name="_to" value="keretlentivadar@gmail.com">
+
+                                                <!-- Order Details (You can format this as needed) -->
+                                                <div id="order-details">
+                                                    <!-- Cart items and total price will be displayed here -->
+                                                </div>
+
+                                                <!-- Proceed and Cancel Buttons -->
+                                                <div class="field is-grouped">
+                                                    <div class="control">
+                                                        <button type="button" class="button is-link"
+                                                            onclick="proceedWithOrder()">Proceed</button>
+                                                    </div>
+                                                    <div class="control">
+                                                        <button type="button" class="button is-light"
+                                                            onclick="closeModal()">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHECKOUT -->
+
+            <button id="checkout-btn" class="button is-primary is-fullwidth" onclick="openModal()">Checkout</button>
+
+        </div>
+
+
+
+
+        <!-- KOSÁR KÓDJA  -->
+
+
+        <script>
+            // JavaScript array of product objects
+            const products = [
+                { id: 0, name: 'Nebula Nectar', price: 11, imgSrc: 'kep01.png' },
+                { id: 1, name: 'Fractal Fizz', price: 23, imgSrc: 'kep02.png' },
+                { id: 2, name: 'Paranormal Punch', price: 32, imgSrc: 'kep03.png' },
+                { id: 3, name: 'Unicorn Blood', price: 55, imgSrc: 'kep04.png' },
+                { id: 4, name: 'CosmoCool', price: 77, imgSrc: 'kep05.png' },
+                { id: 5, name: 'Aqua Arkanum', price: 110, imgSrc: 'kep06.png' },
+                { id: 6, name: 'Sustain Soda', price: 200, imgSrc: 'kep07.png' }
+            ];
+
+            // Function to generate the product card HTML
+            function generateProductCard(product) {
+                return `
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-1by1">
+                                    <img src="${product.imgSrc}" alt="Product Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <div class="title-container">
+                                            <h3 class="subtitle is-4"><span id="product-name">${product.name}</span></h3>
+                                        </div>
+                                        <div class="price-container">
+                                            <span data-price="${product.price}" style="font-size: 24px;">${product.price} Ft</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <div class="column is-6 is-offset-2">
+                                    <div class="product-actions">
+                                        <div class="field has-addons">
+                                            <div class="field has-addons ">
+                                                <p class="control">
+                                                    <button class="button is-danger decrement-btn" onclick="decrementQuantity(${product.id})">-</button>
+                                                </p>
+                                                <p class="control">
+                                                    <input type="number" class="input quantity-input" value="1" readonly style="width: 3.5em; text-align: center;">
+                                                </p>
+                                                <p class="control">
+                                                    <button class="button is-success increment-btn" onclick="incrementQuantity(${product.id})">+</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <button class="button is-primary add-to-cart" onclick="var quantityInput = this.parentElement.previousElementSibling.querySelector('.quantity-input'); addToCart('${product.name}', ${product.price}, quantityInput); quantityInput.value = 1;">
+                                                Kosárhoz ad <i class="fa-solid fa-cart-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-3"></div>
+                            </footer>
+                        </div>
+                    </div>`;
+            }
+            // Wait for the DOM to be fully loaded
+            document.addEventListener('DOMContentLoaded', function () {
+                const container = document.querySelector('.columns.is-multiline.is-1');
+
+                products.forEach(product => {
+                    container.innerHTML += generateProductCard(product);
+                });
+            });
+
+
+            var cartItems = [];
+
+            function addToCart(productName, price, quantityInput) {
+                var quantity = parseInt(quantityInput.value, 10);
+
+                var existingItem = cartItems.find(item => item.name === productName);
+
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                    existingItem.totalPrice = parseFloat((existingItem.totalPrice + price * quantity).toFixed(2));
+                } else {
+                    cartItems.push({
+                        name: productName,
+                        quantity: quantity,
+                        totalPrice: parseFloat((price * quantity).toFixed(2))
+                    });
+                }
+
+                updateCart();
+            }
+
+            function clearCart() {
+                // Clear the cart items
+                const cartItems = document.querySelector('#cart-items');
+                cartItems.innerHTML = '';
+
+                // Reset the total price to 0
+                const totalPrice = document.querySelector('#total-price');
+                totalPrice.textContent = '0';
+
+                // Optionally: Close the checkout modal if it's open
+                const checkoutModal = document.querySelector('#checkout-modal');
+                if (checkoutModal.classList.contains('is-active')) {
+                    checkoutModal.classList.remove('is-active');
+                }
+
+                // Optionally: Reset any other cart-related states or UI elements
+            }
+
+
+            function openModal() {
+                //var sum = calculateTotalPrice();
+                var sum = 0;
+
+                var orderDetailsContainer = document.getElementById('order-details');
+                orderDetailsContainer.innerHTML = ''; // Clear any existing content
+
+                var table = document.createElement('table');
+
+                var thead = document.createElement('thead');
+                var headerRow = document.createElement('tr');
+                var headers = ['Product Name', 'Quantity', 'Total Price'];
+
+                headers.forEach(headerText => {
+                    var th = document.createElement('th');
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+
+
+
+
+                var tbody = document.createElement('tbody');
+
+                cartItems.forEach(item => {
+                    var row = document.createElement('tr');
+
+                    var nameCell = document.createElement('td');
+                    nameCell.textContent = item.name;
+                    row.appendChild(nameCell);
+
+                    var quantityCell = document.createElement('td');
+                    quantityCell.textContent = item.quantity;
+                    row.appendChild(quantityCell);
+
+                    var totalPriceCell = document.createElement('td');
+                    totalPriceCell.textContent = item.totalPrice + "Ft";
+                    row.appendChild(totalPriceCell);
+
+                    tbody.appendChild(row);
+                    sum += item.totalPrice; // Add each item's total price to the sum
+                });
+
+                table.appendChild(tbody);
+                orderDetailsContainer.appendChild(table);
+
+                // Display the total sum as "ÖSSZESEN"
+                var totalSumElement = document.createElement('p');
+                totalSumElement.textContent = 'ÖSSZESEN: ' + sum + 'Ft'; // Append 'Ft' for currency
+                orderDetailsContainer.appendChild(totalSumElement);
+
+
+                document.getElementById('checkout-modal').classList.add('is-active');
+            }
+
+            function closeModal() {
+                document.getElementById('checkout-modal').classList.remove('is-active');
+            }
+
+
+            function updateCart() {
+                var cartItemsElement = document.getElementById("cart-items");
+                cartItemsElement.innerHTML = "";
+
+                var sum = 0; // Variable to store the sum of total prices
+
+                cartItems.forEach(item => {
+                    var listItem = document.createElement("li");
+
+                    cartItemsElement.appendChild(listItem);
+
+                    sum += item.totalPrice; // Add the total price of each item to the sum
+                });
+
+
+                // Update the total price element with the sum
+                document.getElementById("total-price").innerText = "ÖSSZESEN: " + sum;
+
+                // Create a table element
+                var table = document.createElement("table");
+
+                // Create table header
+                var thead = document.createElement("thead");
+                var headerRow = document.createElement("tr");
+
+                var nameHeader = document.createElement("th");
+                nameHeader.innerText = "NÉV";
+                headerRow.appendChild(nameHeader);
+
+                var quantityHeader = document.createElement("th");
+                quantityHeader.innerText = "DB";
+                headerRow.appendChild(quantityHeader);
+
+                var totalPriceHeader = document.createElement("th");
+                totalPriceHeader.innerText = "ÖSSZ ÁR";
+                headerRow.appendChild(totalPriceHeader);
+
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                // Create table body
+                var tbody = document.createElement("tbody");
+
+                cartItems.forEach(item => {
+                    var row = document.createElement("tr");
+
+                    var nameCell = document.createElement("td");
+                    nameCell.innerText = item.name;
+                    row.appendChild(nameCell);
+
+                    var quantityCell = document.createElement("td");
+                    quantityCell.innerText = item.quantity;
+                    row.appendChild(quantityCell);
+
+                    var totalPriceCell = document.createElement("td");
+                    totalPriceCell.innerText = item.totalPrice + " Ft";
+                    row.appendChild(totalPriceCell);
+
+                    tbody.appendChild(row);
+                });
+
+                table.appendChild(tbody);
+                cartItemsElement.appendChild(table);
+            }
+
+            function changeQuantity(input, amount) {
+                input.value = Math.max(1, parseInt(input.value, 10) + amount);
+            }
+
+
+
+            // Function to increment quantity
+            function incrementQuantity(index) {
+                var quantityInput = document.getElementsByClassName('quantity-input')[index];
+                quantityInput.value = parseInt(quantityInput.value, 10) + 1;
+            }
+
+            // Function to decrement quantity
+            function decrementQuantity(index) {
+                var quantityInput = document.getElementsByClassName('quantity-input')[index];
+                var currentQuantity = parseInt(quantityInput.value, 10);
+                if (currentQuantity > 1) {
+                    quantityInput.value = currentQuantity - 1;
+                }
+            }
+
+            function resetQuantity(quantityInput) {
+                quantityInput.value = 1;
+            }
+
+            // Function to calculate the total price
+            function calculateTotalPrice() {
+                var totalPrice = 0;
+                for (var i = 0; i < cartItems.length; i++) {
+
+                    totalPrice += cartItems[i].quantity * 10;
+                }
+                return totalPrice;
+            }
+
+            // Function to calculate the total price
+            function calculateTotalPrice() {
+                        var totalPrice = 0;
+                        for (var i = 0; i < cartItems.length; i++) {
+
+                            totalPrice += cartItems[i].quantity * 10;
+                        }
+                        return totalPrice;
+                    }
+
+                    // RENDELÉS ELKÜLDÉSE
+                    function proceedWithOrder() {
+                        // Gather user and order details
+                        const userName = document.getElementById('userName').value;
+                        const userPhone = document.getElementById('userPhone').value;
+                        const userEmail = document.getElementById('userEmail').value;
+
+                        let orderDetailsString = '';
+                        cartItems.forEach(item => {
+                            orderDetailsString += `Product: ${item.name}, Quantity: ${item.quantity}, Total Price: ${item.totalPrice} Ft\n`;
+                        });
+
+                        // Send email using EmailJS
+                        emailjs.send("Gmail", "service_h8e3w0m", {
+                            name: userName,
+                            phone: userPhone,
+                            email: userEmail,
+                            orderDetails: orderDetailsString
+                        })
+                        .then(response => {
+                            console.log('Email sent successfully!', response);
+
+                            // Store order details in localStorage for the confirmation page to use
+                            localStorage.setItem('orderDetails', orderDetailsString);
+
+                            // Redirect to the order confirmation page
+                            window.location.href = 'order_confirmation.html';
+})
+                            .catch(error => {
+                                console.error('Error sending email:', error);
+                                // You can add any error message or action here.
+                            });
+                    }
+
+
+        </script>
+
+</body>
+
+</html>

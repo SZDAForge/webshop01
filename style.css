@@ -1,0 +1,200 @@
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;  /* You can choose your preferred font */
+  background-color: #f4f4f4; /* Light background for contrast */
+}
+
+/* Tab Bar Container */
+.tab-bar {
+  display: none;  /* Hide the tab bar */
+  justify-content: space-around; /* Even spacing between items */
+  align-items: center;
+  background-color: #333;
+  padding: 12px 0;  /* Increased padding for touch targets */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Individual Tabs */
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.tab-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tab-item.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Icons styling */
+.tab-item i {
+  margin-right: 8px;  /* A bit of spacing between icon and text */
+  font-size: 1.5em;  /* Slightly larger icons */
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+  position: absolute; 
+  top: 15px; 
+  left: 15px;  /* Moved to left side */
+  z-index: 1050; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white; /* White lines for the icon */
+}
+
+/* Hamburger Menu Panel */
+.menu-panel {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background-color: #fff;
+  transition: left 0.3s;
+  z-index: 900;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* Optional: Media Query for landscape mode or tablets */
+@media (min-width: 600px) {
+  .tab-bar, .menu-strip {
+      padding: 10px 50px;
+  }
+  .menu-panel {
+      width: 50%;
+  }
+}
+
+
+.custom-navbar {
+    background-color: hsl(200, 50%, 50%); /* Replace with your desired HSL color values */
+  }
+
+  .custom-card-bg {
+    background-color: #e6f7ff;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+}
+
+.is-extra-small .hero-body {
+    padding: 0.5rem 0.5rem; /* You can adjust this value to make the padding smaller */
+}
+
+.text-left-margin {
+    margin-left: 2rem; /* You can adjust this value to set the margin you need */
+}
+
+.no-top-margin {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.smaller-card {
+    transform: scale(1.0,1.0); /* 0.9 is equal to 90%, which is 10% smaller than the original size */
+}
+
+.reduce-upper-margin {
+    margin-top: 0.1rem; /* Adjust this value to reduce the upper margin */
+}
+
+.reduce-lower-margin {
+    margin-bottom: 0.5rem; /* Adjust this value to reduce the lower margin */
+}
+
+
+.product-name {
+
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+.middle-align {
+    margin: 0 auto; /* Optionally center the element horizontally */
+  }
+
+  .media-content{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-container {
+    text-align: center;
+    margin-bottom: 10px; /* Optional: Add spacing between button and price tag */
+  }
+  
+  .media-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .title-container {
+    margin-bottom: 10px; /* Add spacing between title and price */
+  }
+
+  th, td {
+    padding: 0px 12px; /* This sets 10px of vertical padding and 20px of horizontal padding */
+    text-align: right;
+}
+
+.custom-card-bg {
+    background-color: #f9f9f9;
+}
+
+.card-header {
+    background-color: #8d91de;
+    color: #fff;
+}
+
+#checkout-btn {
+    margin-top: 10px;
+}
+hr {
+  border: none; /* Remove the default border */
+  height: 2px; /* Set the height of the line */
+  background-color: #333; /* Set the color of the line */
+}
+
+#total-price {
+  text-align: right;
+}
+
+
